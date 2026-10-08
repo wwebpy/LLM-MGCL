@@ -1,16 +1,30 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper below."
-title: "LLM-MGCL"
+title: "LLM-MGCL: POI Recommendation with LLM-Augmented Multi-Graph Learning and Contrastive Alignment"
 type: software
-authors:
-  - family-names: "<Family name>"
-    given-names: "<Given name>"
 license: MIT
+authors:
+  - family-names: "Tamer"
+    given-names: "Burak"
+  - family-names: "Höpken"
+    given-names: "Wolfram"
+  - family-names: "Wang"
+    given-names: "Zehui"
+identifiers:
+  - type: other
+    value: "arXiv:2608.16407"
+    description: "arXiv preprint"
 preferred-citation:
-  type: conference-paper
+  type: article
   title: "POI Recommendation with LLM-Augmented Multi-Graph Learning and Contrastive Alignment"
   authors:
-    - family-names: "<Family name>"
-      given-names: "<Given name>"
-  collection-title: "<Proceedings / venue>"
+    - family-names: "Tamer"
+      given-names: "Burak"
+    - family-names: "Höpken"
+      given-names: "Wolfram"
+    - family-names: "Wang"
+      given-names: "Zehui"
+  journal: "arXiv preprint arXiv:2608.16407"
   year: 2026
+  month: 8
+  url: "https://arxiv.org/abs/2608.16407"
