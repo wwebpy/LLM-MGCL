@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "LLM-MGCL"
+type: software
+authors:
+  - family-names: "<Family name>"
+    given-names: "<Given name>"
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "POI Recommendation with LLM-Augmented Multi-Graph Learning and Contrastive Alignment"
+  authors:
+    - family-names: "<Family name>"
+      given-names: "<Given name>"
+  collection-title: "<Proceedings / venue>"
+  year: 2026

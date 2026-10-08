@@ -1,0 +1,107 @@
+# Default configuration for all experiments in the paper.
+# Every value here was taken verbatim from the original experiment notebook.
+
+paths:
+  raw_dataset: "hf://datasets/wzehui/Yelp-Multimodal-Recommendation"
+  processed_dir: "data/processed"
+  checkpoint_dir: "checkpoints"
+  results_dir: "results"
+  figures_dir: "results/figures"
+
+data:
+  min_interactions: 3        # users with fewer reviews are removed
+  split: [0.8, 0.1, 0.1]     # per-user train / val / test
+  split_seed: 42             # random_state of the per-user shuffle
+
+graphs:
+  ui:
+    star_weight_min: 0.1     # (stars - 1) / 4, clamped from below
+  semantic:
+    encoder: "all-MiniLM-L6-v2"
+    text_fields: ["summary", "keywords"]
+    k: 10                    # top-k most similar items
+    max_dist_km: 50.0        # only items within this radius may be linked
+    batch_size: 1024         # rows of the similarity matrix per chunk
+  geo:
+    k: 10                    # top-k nearest items
+    max_dist_km: 50.0        # hard cut-off
+    chunk_size: 500
+
+training:
+  seeds: [42, 123, 2024]
+  epochs: 100
+  batch_size: 2048
+  lr: 1.0e-3
+  lr_step_size: 20
+  lr_gamma: 0.5
+  eval_every: 2
+  patience: 8                # in evaluation rounds
+  early_stop_k: 20           # validation Recall@K used for model selection
+  eval_batch_size: 1024
+
+evaluation:
+  ks: [10, 20]
+
+models:
+  llm_mgcl:
+    emb_dim: 64
+    n_layers_ui: 3
+    n_layers_sim: 2
+    n_layers_geo: 2
+    temp: 0.2
+    reg: 1.0e-3
+    lam: 0.05
+  lightgcn:
+    emb_dim: 64
+    n_layers: 3
+    reg: 1.0e-3
+  ngcf:
+    emb_dim: 64
+    n_layers: 3
+    dropout: 0.1
+    reg: 1.0e-3
+  sgl:
+    emb_dim: 64
+    n_layers: 3
+    drop_rate: 0.1
+    temp: 0.2
+    reg: 1.0e-3
+    lam: 0.1
+  gcmc:
+    emb_dim: 64
+    hidden_dim: 64
+    dropout: 0.1
+    reg: 1.0e-4
+  neumf:
+    emb_dim: 64
+    mlp_layers: [128, 64, 32]
+    reg: 1.0e-4
+  mf_bpr:
+    emb_dim: 64
+    reg: 1.0e-3
+  itemknn:
+    k_neighbors: 50
+    chunk_size: 500
+  userknn:
+    k_neighbors: 50
+    chunk_size: 500
+
+# Ablation variants of LLM-MGCL (flags apply to training AND evaluation)
+ablations:
+  full:   {use_sem: true,  use_geo: true,  use_cl: true}
+  wo_cl:  {use_sem: true,  use_geo: true,  use_cl: false}
+  wo_sem: {use_sem: false, use_geo: true,  use_cl: true}
+  wo_geo: {use_sem: true,  use_geo: false, use_cl: true}
+
+cold_start:
+  # Popularity buckets (training interactions per item), 33rd / 66th percentile
+  buckets:
+    cold: [0, 20]
+    warm: [21, 37]
+    hot:  [38, .inf]
+  # Fine bins used for the line plot; items with > 100 interactions are not plotted
+  fine_bins:
+    cold: [["4-9", 4, 9], ["10-12", 10, 12], ["13-15", 13, 15], ["16-18", 16, 18], ["19-20", 19, 20]]
+    warm: [["21-23", 21, 23], ["24-26", 24, 26], ["27-29", 27, 29], ["30-33", 30, 33], ["34-37", 34, 37]]
+    hot:  [["38-50", 38, 50], ["51-63", 51, 63], ["64-75", 64, 75], ["76-87", 76, 87], ["88-100", 88, 100]]
+  k: 20
