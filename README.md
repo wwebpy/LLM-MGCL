@@ -14,7 +14,6 @@ embeddings. The item representation is the sum of the three views. The model is 
 L2 regularisation and a bidirectional InfoNCE loss that aligns the collaborative view with the
 semantic and geographic views (`λ = 0.05`, `τ = 0.2`).
 
-> **Paper:** _<title, venue, year - add after acceptance>_
 
 ## Repository structure
 
@@ -47,10 +46,10 @@ semantic and geographic views (`λ = 0.05`, `τ = 0.2`).
 ## Installation
 
 ```bash
-git clone <repo-url> && cd llm-mgcl
-python -m venv .venv && source .venv/bin/activate
-# install the PyTorch build matching your CUDA version first: https://pytorch.org/get-started/locally/
-pip install -e .            # or: pip install -r requirements.txt
+git clone https://github.com/wwebpy/LLM-MGCL.git && cd llm-mgcl
+python -m venv .venv 
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ## Data
@@ -105,16 +104,6 @@ with a paired t-test and a Wilcoxon signed-rank test, Holm–Bonferroni correcte
 warm (21–37) and hot (> 37), which are the 33rd and 66th percentiles. Recall@20 is computed on
 the test items of each bucket.
 
-### Results
-
-_Fill in from `results/table1_model_comparison.csv`._
-
-| Model | Recall@10 | NDCG@10 | Recall@20 | NDCG@20 |
-|---|---|---|---|---|
-| LLM-MGCL | | | | |
-| SGL | | | | |
-| LightGCN | | | | |
-| … | | | | |
 
 ## Pretrained checkpoints
 
@@ -124,7 +113,8 @@ the original experiment notebook without retraining:
 ```bash
 python scripts/build_graphs.py
 python scripts/import_colab_checkpoints.py --src /path/to/GNN_Paper_Models
-python scripts/compare_models.py && python scripts/cold_start.py
+python scripts/compare_models.py 
+python scripts/cold_start.py
 ```
 
 ## Reproducibility notes
@@ -144,11 +134,14 @@ python scripts/compare_models.py && python scripts/cold_start.py
 ## Citation
 
 ```bibtex
-@inproceedings{llmmgcl,
-  title     = {POI Recommendation with LLM-Augmented Multi-Graph Learning and Contrastive Alignment},
-  author    = {<authors>},
-  booktitle = {<venue>},
-  year      = {<year>}
+@misc{tamer2026poirecommendationllmaugmentedmultigraph,
+      title={POI Recommendation with LLM-Augmented Multi-Graph Learning and Contrastive Alignment}, 
+      author={Burak Tamer and Wolfram Höpken and Zehui Wang},
+      year={2026},
+      eprint={2608.16407},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2608.16407}, 
 }
 ```
 
