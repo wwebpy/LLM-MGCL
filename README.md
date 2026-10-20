@@ -107,7 +107,7 @@ the test items of each bucket.
 
 ## Pretrained checkpoints
 
-_Link to the checkpoints (e.g. Hugging Face Hub / Zenodo)._ To evaluate checkpoints produced by
+[Checkpoints on Huggingface](https://huggingface.co/bbbur/LLM-MGCL) To evaluate checkpoints produced by
 the original experiment notebook without retraining:
 
 ```bash
