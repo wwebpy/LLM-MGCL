@@ -136,7 +136,7 @@ python scripts/cold_start.py
 ```bibtex
 @misc{tamer2026poirecommendationllmaugmentedmultigraph,
       title={POI Recommendation with LLM-Augmented Multi-Graph Learning and Contrastive Alignment}, 
-      author={Burak Tamer and Wolfram Höpken and Zehui Wang},
+      author={Burak Tamer and Wolfram Höpken and Zehui Wang and Thomas Bayer},
       year={2026},
       eprint={2608.16407},
       archivePrefix={arXiv},
