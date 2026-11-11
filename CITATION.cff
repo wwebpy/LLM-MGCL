@@ -10,6 +10,8 @@ authors:
     given-names: "Wolfram"
   - family-names: "Wang"
     given-names: "Zehui"
+  - family-names: "Bayer"
+    given-names: "Thomas"
 identifiers:
   - type: other
     value: "arXiv:2608.16407"
@@ -24,6 +26,8 @@ preferred-citation:
       given-names: "Wolfram"
     - family-names: "Wang"
       given-names: "Zehui"
+    - family-names: "Bayer"
+      given-names: "Thomas"
   journal: "arXiv preprint arXiv:2608.16407"
   year: 2026
   month: 8
